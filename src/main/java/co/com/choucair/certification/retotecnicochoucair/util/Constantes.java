@@ -19,4 +19,9 @@ public class Constantes {
     public static final int NUMERO_MAXIMO_REINTENTOS = 50;
 
     public static final int INTERVALO = 10000;
+
+    public static final int INTERVALO_CARGA_APP = 20000;
+
+
+    public static final String TEXTO_A_COMPARAR = "Nevera HACEB No Frost 243 9002257";
 }
