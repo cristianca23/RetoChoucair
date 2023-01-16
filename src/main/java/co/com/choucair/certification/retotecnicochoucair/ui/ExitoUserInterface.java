@@ -34,9 +34,11 @@ public class ExitoUserInterface {
 
     public static final Target TABLE_CART_ITEMS = PageElement.locatedBy("//*[@class='table cart-items']/tbody/tr[td]");
 
-    public static final Target NOMBRE_TELEVISOR = Target.the("Nombre del televisor a evaluar").locatedBy("(//td[@data-bind=css: { 'sac-loading' : window.cart.loadingItem() }])[{0}]");
 
 
+    public static final Target VALIDAR_PRODUCTO = Target.the("Boton agregar").located(By.xpath("//*[@class='totalItems']"));
+
+    public static final Target PRECIO_INDIVIDUAL =Target.the("Precio de cada producto").locatedBy("(//div[@class='exito-vtex-components-4-x-PricePDP'])[{0}]");
     public static Target adicionarProducto(String tituloProducto) {
        return Button.withText("Agregar").inside(PageElement.locatedBy("//*[@id='gallery-layout-container']/div").containingText(tituloProducto));
     }
@@ -44,6 +46,8 @@ public class ExitoUserInterface {
     public static Target aumentarProducto(String tituloProducto) {
         return Button.locatedBy("//button[@class='exito-vtex-components-4-x-buttonActions exito-vtex-components-4-x-productSummaryAddToCar  product-summary-add-to-car-plus']").inside(PageElement.locatedBy("//*[@id='gallery-layout-container']/div").containingText(tituloProducto));
     }
+
+    public static final Target BUTTON_AUMENTAR = Target.the("Boton aumentar cantidad").located(By.xpath("(//*[name()='path'])[229]"));
 
 
 }

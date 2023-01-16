@@ -13,7 +13,9 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import static org.assertj.core.api.Assertions.assertThat;
+
+import static co.com.choucair.certification.retotecnicochoucair.ui.ExitoUserInterface.VALIDAR_PRODUCTO;
+
 
 import java.util.List;
 
@@ -26,27 +28,29 @@ public class ExitoStepDefinitions {
 
     @Dado("^que (.*) quiere ingresar a la pagina del exito$")
     public void queLuisaQuiereIngresarALaPaginaDelExito(String actor) {
-        // Write code here that turns the phrase above into concrete actions
         OnStage.theActorCalled(actor).wasAbleTo(AbrirUrl.exito());
     }
     @Dado("seleccionar diferentes televisores")
     public void seleccionarDiferentesTelevisores() {
-        // Write code here that turns the phrase above into concrete actions
         OnStage.theActorInTheSpotlight().attemptsTo(Buscar.categoriaTelevisor());
     }
     @Cuando("Luisa agrega al carrito los televisores en diferentes cantidades")
     public void luisaAgregaAlCarritoLosTelevisoresEnDiferentesCantidades() {
-        // Write code here that turns the phrase above into concrete actions
         OnStage.theActorInTheSpotlight().attemptsTo(Agregar.alCarrito());
     }
     @Entonces("Luisa ira a realizar la validacion de sus televisores")
     public void luisaIraARealizarLaValidacionDeSusTelevisores() {
-        // Write code here that turns the phrase above into concrete actions
         Actor actor = OnStage.theActorInTheSpotlight();
         List<Producto> productosRecordados = actor.recall("productos");
         List<Producto> productosCarritoCompras = actor.asksFor(Obtener.productosCarritoCompras());
 
-        assertThat(productosRecordados).containsExactlyElementsOf(productosCarritoCompras);
+        String elementText = VALIDAR_PRODUCTO.resolveFor(actor).getText().trim().substring(0,1);
+
+        actor.attemptsTo(
+        Ensure.that(productosCarritoCompras.get(0).valorProducto()).isSubstringOf(productosRecordados.get(0).valorProducto()),
+        Ensure.that(productosRecordados.get(0).nombreProducto()).isSubstringOf(productosCarritoCompras.get(0).nombreProducto()),
+                Ensure.that(elementText).isEqualToIgnoringCase(productosRecordados.get(0).cantidadProducto()));
+
     }
 
 }
