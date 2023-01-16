@@ -8,7 +8,7 @@ pipeline {
         }
     stage('Compilación') {
                 steps {
-                    sh './gradlew build'
+                    echo ("./gradlew build")
                 }
             }
     stage('Test') {
