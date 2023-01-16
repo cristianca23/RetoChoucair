@@ -47,9 +47,9 @@ public class ExitoStepDefinitions {
         String elementText = VALIDAR_PRODUCTO.resolveFor(actor).getText().trim().substring(0,1);
 
         actor.attemptsTo(
-        Ensure.that(productosCarritoCompras.get(0).valorProducto()).isSubstringOf(productosRecordados.get(0).valorProducto()),
-        Ensure.that(productosRecordados.get(0).nombreProducto()).isSubstringOf(productosCarritoCompras.get(0).nombreProducto()),
-                Ensure.that(elementText).isEqualToIgnoringCase(productosRecordados.get(0).cantidadProducto()));
+        Ensure.that(productosCarritoCompras.get(0).getValorProducto()).isSubstringOf(productosRecordados.get(0).getValorProducto()),
+        Ensure.that(productosRecordados.get(0).getNombreProducto()).isSubstringOf(productosCarritoCompras.get(0).getNombreProducto()),
+                Ensure.that(elementText).isEqualToIgnoringCase(productosRecordados.get(0).getCantidadProducto()));
 
     }
 
