@@ -39,8 +39,6 @@ target/
 # Compiled class file
 *.class
 
-### ChromeDriver###
-chromedriver
-chromedriver.exe
+
 
 /bin/
