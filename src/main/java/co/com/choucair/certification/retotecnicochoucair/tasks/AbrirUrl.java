@@ -12,7 +12,7 @@ public class AbrirUrl implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Open.url(URL), Browser.maximize());
+        actor.attemptsTo(Open.url(URL));
     }
 
 

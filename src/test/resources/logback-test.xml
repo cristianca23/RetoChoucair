@@ -6,10 +6,13 @@
             </pattern>
         </encoder>
     </appender>
-    <logger name="root" level="INFO"/>
+
+    <logger name="root" level="DEBUG"/>
     <logger name="net.serenitybdd" level="INFO"/>
     <logger name="net.thucydides" level="INFO"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
+
 </configuration>

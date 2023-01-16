@@ -10,8 +10,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/exitoCompras.feature"},
         glue = {"stepdefinitions"},
         tags = "@ComprarTelevisores",
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        dryRun = false
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 
 public class runnerExito {
