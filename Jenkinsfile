@@ -6,6 +6,11 @@ pipeline {
                 git 'https://github.com/cristianca23/RetoChoucair.git'
             }
         }
+    stage('Compilación') {
+                steps {
+                    sh './gradlew build'
+                }
+            }
     stage('Test') {
                 steps {
                     script {
