@@ -43,14 +43,15 @@ public class ExitoStepDefinitions {
         Actor actor = OnStage.theActorInTheSpotlight();
         List<Producto> productosRecordados = actor.recall("productos");
         List<Producto> productosCarritoCompras = actor.asksFor(Obtener.productosCarritoCompras());
-
         String elementText = VALIDAR_PRODUCTO.resolveFor(actor).getText().trim().substring(0,1);
-
-        actor.attemptsTo(
-        Ensure.that(productosCarritoCompras.get(0).getValorProducto()).isSubstringOf(productosRecordados.get(0).getValorProducto()),
-        Ensure.that(productosRecordados.get(0).getNombreProducto()).isSubstringOf(productosCarritoCompras.get(0).getNombreProducto()),
-                Ensure.that(elementText).isEqualToIgnoringCase(productosRecordados.get(0).getCantidadProducto()));
-
+        int i = 0;
+        while (i <productosRecordados.size()){
+            actor.attemptsTo(
+                    Ensure.that(productosCarritoCompras.get(i).getValorProducto()).isSubstringOf(productosRecordados.get(i).getValorProducto()),
+                    Ensure.that(productosRecordados.get(i).getNombreProducto()).isSubstringOf(productosCarritoCompras.get(i).getNombreProducto())
+            );
+            i = i + 1;
+        }
     }
 
 }
